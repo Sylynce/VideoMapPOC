@@ -17,6 +17,7 @@ import android.media.ImageReader;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.annotation.NonNull;
+import android.support.annotation.Size;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.Surface;
@@ -26,6 +27,7 @@ import com.poc.diego.videomappoc.activities.BaseActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by Diego on 3/22/2017.
@@ -201,6 +203,10 @@ public class CameraUtil implements TextureView.SurfaceTextureListener {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    private void calculateOptimalSize(List<Size> supportedSizes) {
+
     }
 
     public void onResume() {
