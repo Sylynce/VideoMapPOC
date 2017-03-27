@@ -8,7 +8,7 @@ import com.poc.diego.videomappoc.R;
 import com.poc.diego.videomappoc.adapters.PagerAdapter;
 
 public class BaseActivity extends AppCompatActivity {
-
+    public static final boolean DEBUG = true;
     private ViewPager mPager;
 
     @Override

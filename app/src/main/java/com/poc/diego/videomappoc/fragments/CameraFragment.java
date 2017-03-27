@@ -10,27 +10,26 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.poc.diego.videomappoc.R;
-import com.poc.diego.videomappoc.utils.CameraManager;
+import com.poc.diego.videomappoc.utils.CameraUtil;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class CameraFragment extends Fragment implements View.OnClickListener{
 
-    private TextureView textureView;
     private Button captureBtn;
-    private CameraManager cameraManager;
+    private CameraUtil cameraUtil;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_camera, container, false);
 
-        textureView = (TextureView) view.findViewById(R.id.textureView);
+        TextureView textureView = (TextureView) view.findViewById(R.id.textureView);
         captureBtn = (Button) view.findViewById(R.id.captureBtn);
-        cameraManager = CameraManager.getInstance();
+        cameraUtil = new CameraUtil(getActivity(), textureView);
         captureBtn.setOnClickListener(this);
-        textureView.setSurfaceTextureListener(cameraManager);
+        textureView.setSurfaceTextureListener(cameraUtil);
 
         return view;
     }
@@ -38,5 +37,17 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        cameraUtil.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        cameraUtil.onPause();
     }
 }
